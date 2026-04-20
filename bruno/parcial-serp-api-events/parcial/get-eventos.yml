@@ -1,0 +1,32 @@
+info:
+  name: Get eventos con filtros variables
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url}}/eventos?ciudad={{ciudad}}&fecha={{fecha}}&virtual={{virtual}}&hl={{hl}}&gl={{gl}}&start={{start}}"
+  auth: inherit
+
+runtime:
+  variables:
+    - name: url
+      value: http://localhost:3001
+    - name: ciudad
+      value: Austin
+    - name: fecha
+      value: week
+    - name: virtual
+      value: false
+    - name: hl
+      value: es
+    - name: gl
+      value: es
+    - name: start
+      value: 0
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

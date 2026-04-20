@@ -1,0 +1,18 @@
+opencollection: 1.0.0
+
+info:
+  name: parcial-serp-api-events
+  type: workspace
+
+bundled: false
+
+collections:
+  - name: parcial
+    path: parcial
+
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git
+      - .gitignore

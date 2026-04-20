@@ -1,0 +1,10 @@
+{
+  "name": "bruno",
+  "type": "workspace",
+  "collections": [
+    {
+      "name": "parcial",
+      "path": "parcial-serp-api-events/parcial"
+    }
+  ]
+}

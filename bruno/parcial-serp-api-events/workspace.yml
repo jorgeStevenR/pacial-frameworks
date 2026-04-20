@@ -1,0 +1,12 @@
+opencollection: 1.0.0
+info:
+  name: "parcial-serp-api-events"
+  type: workspace
+
+collections:
+  - name: "parcial"
+    path: "collections/parcial"
+
+specs:
+
+docs: ''
