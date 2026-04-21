@@ -5,7 +5,7 @@ info:
 
 collections:
   - name: "parcial"
-    path: "collections/parcial"
+    path: "parcial"
 
 specs:
 

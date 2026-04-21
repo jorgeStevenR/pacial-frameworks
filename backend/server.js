@@ -110,9 +110,30 @@ app.get("/eventos", (req, res) => {
     return image;
   };
 
+  const sortByDate = (events) => {
+    const months = { ene:0, feb:1, mar:2, abr:3, may:4, jun:5, jul:6, ago:7, sep:8, oct:9, nov:10, dic:11 };
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const getTimestamp = (event) => {
+      const d = event.date;
+      const str = (typeof d === 'object' ? d?.start_date : d) || '';
+      const parts = str.toLowerCase().trim().split(' ');
+      const month = months[parts[0]];
+      const day = parseInt(parts[1]);
+      if (month === undefined || isNaN(day)) return Infinity;
+      const year = today.getFullYear();
+      const date = new Date(year, month, day);
+      if (date < today) date.setFullYear(year + 1);
+      return date.getTime();
+    };
+
+    return events.sort((a, b) => getTimestamp(a) - getTimestamp(b));
+  };
+
   getJson(params, (json) => {
     const results = json.events_results || [];
-    
+
     // Procesar resultados para incluir imágenes de alta resolución
     const processedResults = results.map(event => {
       let image = null;
@@ -138,8 +159,9 @@ app.get("/eventos", (req, res) => {
       };
     });
 
-    console.log(`Resultados: ${processedResults.length} eventos encontrados`);
-    res.json(processedResults);
+    const sorted = sortByDate(processedResults);
+    console.log(`Resultados: ${sorted.length} eventos encontrados`);
+    res.json(sorted);
   });
 });
 
