@@ -1,18 +1,21 @@
-const EventList = ({ events, selectedEvent, onSelectEvent, loading, error }) => {
+const EventList = ({ events, selectedEvent, onSelectEvent, loading, error, ciudad }) => {
   if (loading && events.length === 0) {
     return <div className="events-list-empty">Cargando eventos...</div>;
   }
 
   if (error) {
-    return <div className="events-list-error">{error}</div>;
+    const mensaje = error.toLowerCase().includes('failed to fetch')
+      ? 'No se pudo conectar con el servidor. Asegúrate de que el backend esté corriendo en localhost:3001.'
+      : `Ocurrió un error: ${error}`;
+    return <div className="events-list-error">{mensaje}</div>;
   }
 
   if (events.length === 0) {
     return (
       <div className="events-list-empty">
-        <div className="empty-icon">📅</div>
-        <h2>Listo para consultar</h2>
-        <p>Escribe una búsqueda para ver eventos</p>
+        <div className="empty-icon">🔍</div>
+        <h2>Sin resultados</h2>
+        <p>No se encontraron eventos{ciudad ? ` en "${ciudad}"` : ''}. Intenta con otra ciudad o cambia el filtro de fecha.</p>
       </div>
     );
   }

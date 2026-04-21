@@ -37,7 +37,7 @@ const SearchPanel = ({
         <div className="details-row">
           <div className="detail-card">
             <MapPin size={16} />
-            <span>{ciudad}, TX</span>
+            <span>{ciudad}</span>
           </div>
           <div className="detail-card">
             <Globe size={16} />

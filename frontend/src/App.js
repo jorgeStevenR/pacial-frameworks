@@ -130,6 +130,7 @@ function App() {
             onSelectEvent={setSelectedEvent}
             loading={loading}
             error={error}
+            ciudad={ciudad}
           />
         </div>
 
