@@ -5,19 +5,18 @@ info:
 
 http:
   method: GET
-  url: "{{url}}/eventos?ciudad={{ciudad}}&hl={{hl}}&gl={{gl}}"
+  url: http://localhost:3001/eventos
   auth: inherit
-
-runtime:
-  variables:
-    - name: url
-      value: http://localhost:3001
+  params:
     - name: ciudad
       value: Austin
+      enabled: true
     - name: hl
       value: es
+      enabled: true
     - name: gl
       value: es
+      enabled: true
 
 settings:
   encodeUrl: true
